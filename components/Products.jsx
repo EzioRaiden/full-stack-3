@@ -1,17 +1,18 @@
 'use client'
+
 import { useState } from "react"
 import Portal from "./Portal"
 import { useProducts } from "@/context/ProductContext"
+
+
 export default function Products(props) {
     const { planner, stickers } = props
-   
     const [portalImage, setPortalImage] = useState(null)
 
     const { handleIncrementProduct, cart } = useProducts()
-
+    console.log(cart)
 
     if (!stickers.length || !planner) { return null }
-
 
     return (
         <>
@@ -25,14 +26,15 @@ export default function Products(props) {
             <div className="section-container">
                 <div className="section-header">
                     <h2>Shop Our Selection</h2>
-                    <p>From organization or accessorization</p>
+                    <p>From organisation or accessorization</p>
                 </div>
+
                 <div className="planner-container">
                     <div>
                         <button onClick={() => {
                             setPortalImage('planner')
                         }} className="img-button">
-                            <img src="low_res/planner.jpeg" alt="high-res-plan" />
+                            <img src="low_res/planner.jpeg" alt="high-res-planner" />
                         </button>
                     </div>
                     <div className="planner-info">
@@ -48,26 +50,26 @@ export default function Products(props) {
                                 <strong>Fully Printable:</strong> Designed at ultra-high resolution, it&apos;s perfect for printing on any size paper, from A4 to poster-sized displays.
                             </li>
                         </ul>
-                        <div onClick={() => {
-                            const plannerPriceId = planner.default_price
-                            handleIncrementProduct(plannerPriceId, 1, planner)
-                        }} className="purchase-btns">
-                            <button>Add to cart</button>
+                        <div className="purchase-btns">
+                            <button onClick={() => {
+                                const plannerPriceId = planner.default_price
+                                handleIncrementProduct(plannerPriceId, 1, planner)
+                            }}>Add to cart</button>
                         </div>
                     </div>
-
                 </div>
             </div>
 
+
             <div className="section-container">
                 <div className="section-header">
-                    <h2>Or collect your Favourite Tech</h2>
+                    <h2>Or Collect Your Favorite Tech</h2>
                     <p>Choose from our custom designed tech logos</p>
                 </div>
                 <div className="sticker-container">
                     {stickers.map((sticker, stickerIndex) => {
                         const stickerName = sticker.name
-                        const stickerImgUrl = sticker.name.replaceAll(' Sticker', '').replaceAll(' ', '_')
+                        const stickerImgUrl = sticker.name.replaceAll(' Sticker.png', '').replaceAll(' ', '_')
                         return (
                             <div key={stickerIndex} className="sticker-card">
                                 <button onClick={() => {
