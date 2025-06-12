@@ -3,15 +3,15 @@ import Products from "@/components/Products";
 
 export async function getProducts() {
     try {
-        const response = await fetch('/api/products', {
-            cache: 'no-store',
-        });
 
-        const products = await response.json();
-        return products;
+        const baseURL = process.env.NEXT_PUBLIC_BASE_URL
+        const response = await fetch(baseURL + '/api/products')
+        const products = await response.json()
+        return products
     } catch (err) {
-        console.error('Error fetching products:', err.message);
-        return [];
+        console.log(err.stack)
+        console.log(err.message)
+        return []
     }
 }
 
