@@ -69,7 +69,7 @@ export default function Products(props) {
                 <div className="sticker-container">
                     {stickers.map((sticker, stickerIndex) => {
                         const stickerName = sticker.name
-                        const stickerImgUrl = sticker.name.replaceAll(' Sticker.png', '').replaceAll(' ', '_')
+                        const stickerImgUrl = sticker.name.replaceAll(' Sticker', '').replaceAll(' ', '_')
                         return (
                             <div key={stickerIndex} className="sticker-card">
                                 <button onClick={() => {
